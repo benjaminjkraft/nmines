@@ -20,13 +20,15 @@ import Game
 import RotButtons
 import Types
 import Utils
+import Paths_nmines
 
 --todo: rotButtons often reflect as well as rotate.  fix this.
 
 main :: IO GameState
 main = do
   initGUI
-  Just xml <- xmlNew "nmines.glade"
+  gladePath <- getDataFileName "nmines.glade"
+  Just xml <- xmlNew gladePath
   topWindow <- xmlGetWidget xml castToWindow "topWindow"
   newGameWindow <- xmlGetWidget xml castToWindow "newGame"
   table <- xmlGetWidget xml castToTable "table"
